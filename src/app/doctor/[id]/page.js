@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import DoctorProfile from "@/components/modules/doctor/ProfilePage";
-import PrescriptionPage from "@/components/modules/doctor/prescriptionPage";
 import PrescriptionForm from "@/components/modules/doctor/PrescriptionForm";
+import PrescriptionPage from "@/components/modules/doctor/PrescriptionPage";
 
 const DoctorDashboard = () => {
   const [currentStep, setCurrentStep] = useState("profile");
