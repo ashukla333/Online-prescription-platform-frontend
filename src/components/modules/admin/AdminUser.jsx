@@ -89,7 +89,7 @@ const AdminUser = ({ setAuthType }) => {
         className={"text-primary-text-color"}
       />
       <TextContent
-        text={"Login with Username and Password"}
+        text={"Login with Email and Password"}
         className={"text-primary-black-color font-sans w-max text-xl"}
       />
 
