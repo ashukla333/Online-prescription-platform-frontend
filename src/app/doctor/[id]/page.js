@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import DoctorProfile from "@/components/modules/doctor/ProfilePage";
 import PrescriptionForm from "@/components/modules/doctor/PrescriptionForm";
-import PrescriptionPage from "@/components/modules/doctor/PrescriptionPage";
+import PrescriptionPage from "@/components/modules/doctor/PrescriptionPages";
 
 const DoctorDashboard = () => {
   const [currentStep, setCurrentStep] = useState("profile");
