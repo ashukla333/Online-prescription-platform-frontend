@@ -6,11 +6,10 @@ import { signUpDoctor } from "@/app/api/list";
 import { customAxiosPOST } from "@/app/api/methods";
 import { useSnackbar } from "notistack";
 
-
 const doctorSignUpData = [
   {
     label: "Profile Picture",
-    name: "profilePicture",
+    name: "avatar",
     type: "file",
     validation: { required: true, message: "Profile picture is required" },
   },
@@ -47,25 +46,37 @@ const doctorSignUpData = [
     name: "experience",
     type: "number",
     step: "0.1",
-    placeholder: "Enter years of experience (Eg: 1.5)",
+    placeholder: "Enter years of experience (E.g., 1.5)",
     validation: { required: true, message: "Experience is required" },
   },
 ];
 
 const DoctorSignUp = () => {
-  const navigate = useRouter();
+  const router = useRouter();
   const { enqueueSnackbar } = useSnackbar();
-  const handleSignUpSubmit = async (data) => {
+
+  const handleSignUpSubmit = async (formData) => {
+    console.log({ formData });
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("phoneNumber", formData.phone);
+    data.append("experience", formData.experience);
+    data.append("specialty", formData.specialty);
+    data.append("avatar", formData.avatar);
+
+    console.log({ ffff: data });
+
     try {
-    console.log({data})
-      const result = await customAxiosPOST("", signUpDoctor, data);
+      const result = await customAxiosPOST("", signUpDoctor, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (result?.status) {
-        enqueueSnackbar("Doctor Sign-up successful!", {
-          variant: "success",
-        });
-
-        navigate.push("/doctor-signIn");
+        enqueueSnackbar("Doctor Sign-up successful!", { variant: "success" });
+        router.push(`/doctor/signIn`);
       } else {
         enqueueSnackbar("Sign-up failed. Please try again.", {
           variant: "error",
@@ -79,14 +90,14 @@ const DoctorSignUp = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto my-8 p-6 !text-black shadow-lg rounded-lg bg-white">
+    <div className="max-w-md mx-auto my-8 p-6 text-black shadow-lg rounded-lg bg-white">
       <h2 className="text-2xl font-bold mb-4">Doctor Sign-Up</h2>
       <DynamicForm formData={doctorSignUpData} onSubmit={handleSignUpSubmit} />
       <p className="mt-4">
         Already have an account?{" "}
         <span
-          className="text-blue-500 cursor-pointer"
-          onClick={() => navigate.push("/doctor/signIn")}
+          className="text-blue-500 cursor-pointer hover:underline"
+          onClick={() => router.push("/doctor/signIn")}
         >
           Sign In
         </span>

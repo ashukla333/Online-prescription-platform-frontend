@@ -10,7 +10,7 @@ const DoctorCard = ({ doctor }) => {
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-2xl bg-white p-6">
       <div className="relative">
         <Image
-          src={doctor.profileImage}
+          src={doctor.profilePicture}
           alt={`${doctor.name}'s Profile`}
           width={500}
           height={500}
@@ -23,8 +23,8 @@ const DoctorCard = ({ doctor }) => {
           }}
           className="rounded-full cursor-pointer w-32 h-32 mx-auto border-4 border-green-400 shadow-md transition-transform duration-300 hover:scale-110"
         />
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white rounded-full px-2 text-green-600 text-xs font-semibold">
-          {doctor.specialty || "-"}
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white rounded-full px-2 text-black text-xs font-semibold">
+          {doctor.specialty || "specialty"}
         </div>
       </div>
       <div className="text-center mt-4">

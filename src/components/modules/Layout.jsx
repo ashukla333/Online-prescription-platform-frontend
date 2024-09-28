@@ -12,11 +12,14 @@ const Layout = ({ children }) => {
 
   return (
     <>
+    <div className="flex flex-col min-h-screen overflow-visible">
       {!isHiddenLayout && <Header />}
-      <main>
+      <main className="flex-grow ">
         <ToasterContainerSnackbar>{children}</ToasterContainerSnackbar>
+        
       </main>
-      {!isHiddenLayout && <Footer />}
+    </div>
+     
     </>
   );
 };

@@ -11,6 +11,7 @@ api.interceptors.request.use(
     const accessToken = localStorage.getItem("AuthToken");
     if (accessToken) {
       req.headers.Authorization = `Bearer ${accessToken}`;
+      req.headers["Content-Type"]="application/json"
     }
     return req;
   },

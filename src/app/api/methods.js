@@ -16,9 +16,9 @@ export const customAxiosGET = async (microservice, url, params = {}) => {
 
 // POST METHOD
 export const customAxiosPOST = async (microservice, url, data, config) => {
+  console.log({data})
   try {
-    const body = data;
-    const response = await api.post(microservice + url, body, config);
+    const response = await api.post(microservice + url, data, config);
     return response.data;
   } catch (error) {
     return {

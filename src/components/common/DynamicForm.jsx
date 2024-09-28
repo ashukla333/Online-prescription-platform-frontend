@@ -11,7 +11,7 @@ console.log({file})
 
   const onFormSubmit = (data) => {
     if (file) {
-      data.profilePicture = file; 
+      data.avatar = file; 
       console.log({data})
     }
     onSubmit(data);
@@ -49,7 +49,7 @@ console.log({file})
           )}
         </div>
       ))}
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+      <button type="submit" className="bg-green-500 w-full text-white p-2 rounded">
         Submit
       </button>
     </form>
